@@ -6,7 +6,7 @@ void foo(int a){
 }
 
 int main(){
-  int x = 5;
+  int x = 8;
   foo(x);
   int *xx = &x;
   cout << *xx << endl;
