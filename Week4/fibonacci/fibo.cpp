@@ -10,7 +10,7 @@ struct fibonacci {
   }
   fibonacci(){
     previousNumber = 1;
-    currentNumber = 1;
+    currentNumber = 0;
   }
   void print(){
     cout << currentNumber << endl;
