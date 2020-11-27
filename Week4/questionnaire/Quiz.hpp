@@ -1,7 +1,8 @@
 #ifndef QUIZ_H
 #define QUIZ_H
-#include <cstdlib>
 #include <ctime>
+#include <algorithm> // shuffle
+#include <random> // std::default_random_engine
 #include <iostream>
 
 const int MaxQuizSize = 19;
@@ -41,18 +42,17 @@ void fill(struct Quiz *myquiz, int size){
     std::cout << "Can not create a quiz this big";
     return;
   }
-  int arr[MaxQuizSize] = {};
-  int RandomNumber;
+  int arr[MaxQuizSize];
+  for (int i = 0; i<MaxQuizSize; ++i){
+    arr[i] = i;
+  }
   //Different seed based on computer time
-  srand((unsigned) time(0));
-  int i=0;
-  while (i<size){
-    RandomNumber = rand() % MaxQuizSize;
-    if (arr[RandomNumber] == 0){
-      myquiz[i] = str[RandomNumber];
-      arr[RandomNumber] = 1;
-      i++;
-    }
+  unsigned seed = time(NULL);
+  //shuffle the first "size" elements of arr
+  shuffle(arr, arr + size, std::default_random_engine(seed));
+
+  for (int i = 0; i<size; ++i){
+    myquiz[i] = str[arr[i]];
   }
 
   return;
