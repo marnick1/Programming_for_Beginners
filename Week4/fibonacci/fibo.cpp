@@ -2,18 +2,18 @@
 using namespace std;
 
 struct fibonacci {
-  int previousNumber;
-  int currentNumber;
+  int previous;
+  int current;
   void next(){
-    currentNumber = previousNumber + currentNumber;
-    previousNumber = currentNumber - previousNumber;
+    current = previous + current;
+    previous = current - previous;
   }
   fibonacci(){
-    previousNumber = 1;
-    currentNumber = 0;
+    previous = 1;
+    current = 0;
   }
   void print(){
-    cout << currentNumber << endl;
+    cout << current << endl;
   }
 };
 
